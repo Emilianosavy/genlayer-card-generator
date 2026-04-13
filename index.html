@@ -1,153 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GenLayer — Community Card Generator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GenLayer — Community Card Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="genlayer.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Background grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
 
-  <!-- Background grid -->
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="genlayer.png" alt="GenLayer logo" class="logo-image" />
+        <span>GenLayer</span>
+      </div>
+      <div class="header-tag">Community Card Generator</div>
+    </header>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="#00E5BE"/>
-        <path d="M8 16C8 11.582 11.582 8 16 8C18.387 8 20.54 8.97 22.1 10.55L19.27 13.38C18.44 12.52 17.28 12 16 12C13.791 12 12 13.791 12 16C12 18.209 13.791 20 16 20C17.28 20 18.44 19.48 19.27 18.62L22.1 21.45C20.54 23.03 18.387 24 16 24C11.582 24 8 20.418 8 16Z" fill="#0A0A0F"/>
-      </svg>
-      <span>GenLayer</span>
-    </div>
-    <div class="header-tag">Community Card Generator</div>
-  </header>
+    <!-- Main -->
+    <main>
+      <!-- Step 1: Form -->
+      <section class="form-section" id="form-section">
+        <div class="section-label">01 — Build your card</div>
+        <h1>What does GenLayer<br /><em>mean to you?</em></h1>
+        <p class="subtitle">
+          Upload your pfp, share your thoughts, and let the protocol<br />turn
+          your words into something poetic.
+        </p>
 
-  <!-- Main -->
-  <main>
-
-    <!-- Step 1: Form -->
-    <section class="form-section" id="form-section">
-      <div class="section-label">01 — Build your card</div>
-      <h1>What does GenLayer<br/><em>mean to you?</em></h1>
-      <p class="subtitle">Upload your pfp, share your thoughts, and let the protocol<br/>turn your words into something poetic.</p>
-
-      <div class="form-card">
-        <!-- PFP Upload -->
-        <div class="upload-zone" id="upload-zone">
-          <input type="file" id="pfp-input" accept="image/*" hidden />
-          <div class="upload-inner" id="upload-inner">
-            <div class="upload-icon">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M14 4V18M14 4L9 9M14 4L19 9" stroke="#00E5BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 20V22C4 23.105 4.895 24 6 24H22C23.105 24 24 23.105 24 22V20" stroke="#00E5BE" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+        <div class="form-card">
+          <!-- PFP Upload -->
+          <div class="upload-zone" id="upload-zone">
+            <input type="file" id="pfp-input" accept="image/*" hidden />
+            <div class="upload-inner" id="upload-inner">
+              <div class="upload-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path
+                    d="M14 4V18M14 4L9 9M14 4L19 9"
+                    stroke="#9272BA"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 20V22C4 23.105 4.895 24 6 24H22C23.105 24 24 23.105 24 22V20"
+                    stroke="#9272BA"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <p>Drop your pfp here<br /><span>or click to browse</span></p>
             </div>
-            <p>Drop your pfp here<br/><span>or click to browse</span></p>
-          </div>
-          <img id="pfp-preview" class="pfp-preview hidden" alt="Profile" />
-        </div>
-
-        <!-- Name -->
-        <div class="field">
-          <label for="name-input">Your name / handle</label>
-          <input type="text" id="name-input" placeholder="e.g. @nakamoto" maxlength="40" />
-        </div>
-
-        <!-- Thoughts -->
-        <div class="field">
-          <label for="thoughts-input">What do you love about GenLayer?</label>
-          <textarea id="thoughts-input" placeholder="Tell us what excites you — AI contracts, on-chain decisions, the vision..." maxlength="500" rows="4"></textarea>
-          <div class="char-count"><span id="char-count">0</span>/500</div>
-        </div>
-
-        <!-- API Key -->
-        <div class="field api-field">
-          <label for="api-key-input">
-            Anthropic API Key
-            <a href="https://console.anthropic.com/" target="_blank" class="get-key">Get one free →</a>
-          </label>
-          <input type="password" id="api-key-input" placeholder="sk-ant-..." />
-          <p class="api-note">🔒 Your key is never stored or sent to any server. All processing happens in your browser.</p>
-        </div>
-
-        <button class="generate-btn" id="generate-btn">
-          <span class="btn-text">Generate my card</span>
-          <span class="btn-icon">→</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Step 2: Card Output -->
-    <section class="output-section hidden" id="output-section">
-      <div class="section-label">02 — Your GenLayer card</div>
-      <h2>Your card is ready</h2>
-      <p class="subtitle">Download it or share directly to X.</p>
-
-      <div class="card-wrapper">
-        <!-- The actual card that gets exported -->
-        <div class="gen-card" id="gen-card">
-          <div class="card-bg-pattern"></div>
-
-          <div class="card-header-text">GenLayer Community Card</div>
-
-          <div class="card-pfp-wrap">
-            <img id="card-pfp" src="" alt="pfp" />
-            <div class="pfp-ring"></div>
+            <img id="pfp-preview" class="pfp-preview hidden" alt="Profile" />
           </div>
 
-          <div class="card-name" id="card-name"></div>
-
-          <div class="card-raw-quote" id="card-raw-quote"></div>
-
-          <div class="card-divider">
-            <span></span>
-            <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="4" fill="#00E5BE"/><path d="M4 8C4 5.791 5.791 4 8 4C9.194 4 10.27 4.485 11.05 5.275L9.635 6.69C9.22 6.26 8.64 6 8 6C6.895 6 6 6.895 6 8C6 9.105 6.895 10 8 10C8.64 10 9.22 9.74 9.635 9.31L11.05 10.725C10.27 11.515 9.194 12 8 12C5.791 12 4 10.209 4 8Z" fill="#0A0A0F"/></svg>
-            <span></span>
+          <!-- Name -->
+          <div class="field">
+            <label for="name-input">Your name / handle</label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder="e.g. @nakamoto"
+              maxlength="40"
+            />
           </div>
 
-          <div class="card-ai-label">AI — poetic interpretation</div>
-          <div class="card-poem" id="card-poem"></div>
+          <!-- Thoughts -->
+          <div class="field">
+            <label for="thoughts-input">What do you love about GenLayer?</label>
+            <textarea
+              id="thoughts-input"
+              placeholder="Tell us what excites you — AI contracts, on-chain decisions, the vision..."
+              maxlength="500"
+              rows="4"
+            ></textarea>
+            <div class="char-count"><span id="char-count">0</span>/500</div>
+          </div>
 
-          <div class="card-footer">
-            <span>genlayer.com</span>
-            <span class="card-footer-dot">·</span>
-            <span>Intelligent Blockchain</span>
+          <button class="generate-btn" id="generate-btn">
+            <span class="btn-text">Generate my card</span>
+            <span class="btn-icon">→</span>
+          </button>
+
+          <div class="quota-card" id="quota-card" aria-live="polite">
+            <div class="quota-card__top">
+              <div>
+                <div class="quota-card__label">Daily quota</div>
+                <div class="quota-card__title">2 cards per IP</div>
+              </div>
+              <div class="quota-card__count" id="quota-count">0 / 2 used</div>
+            </div>
+            <div class="quota-card__bar" aria-hidden="true">
+              <span id="quota-fill"></span>
+            </div>
+            <p class="quota-card__text" id="quota-text">
+              Your quota resets every day. Once you reach 2 generated cards,
+              you’ll need to wait until the next UTC day.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="action-buttons">
-        <button class="action-btn download-btn" id="download-btn">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M9 3V11M9 11L5.5 7.5M9 11L12.5 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3 13V14C3 14.552 3.448 15 4 15H14C14.552 15 15 14.552 15 14V13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          Download card
-        </button>
-        <button class="action-btn share-btn" id="share-btn">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M14 1L9.5 5M14 1L10 5.5M14 1V6M1 9.5C1 9.5 2 14 9 15.5M1 9.5C1 9.5 4 8 7 10M1 9.5L4 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Share to X
-        </button>
-        <button class="action-btn reset-btn" id="reset-btn">
-          Make another
-        </button>
-      </div>
-    </section>
+      <!-- Step 2: Card Output -->
+      <section class="output-section hidden" id="output-section">
+        <div class="section-label">02 — Your GenLayer card</div>
+        <h2>Your card is ready</h2>
+        <p class="subtitle">Download it or share directly to X.</p>
 
-  </main>
+        <div class="card-wrapper">
+          <!-- The actual card that gets exported -->
+          <div class="gen-card" id="gen-card">
+            <div class="card-bg-pattern"></div>
 
-  <footer>
-    <p>Built for the GenLayer community · No data leaves your browser</p>
-  </footer>
+            <div class="card-header-text">GenLayer Community Card</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="app.js"></script>
-</body>
+            <div class="card-pfp-wrap">
+              <img id="card-pfp" src="" alt="pfp" />
+              <div class="pfp-ring"></div>
+            </div>
+
+            <div class="card-name" id="card-name"></div>
+
+            <div class="card-raw-quote" id="card-raw-quote"></div>
+
+            <div class="card-divider">
+              <span></span>
+              <img
+                src="genlayer.png"
+                alt="GenLayer"
+                class="card-divider-logo"
+              />
+              <span></span>
+            </div>
+
+            <div class="card-ai-label">AI — poetic interpretation</div>
+            <div class="card-poem" id="card-poem"></div>
+
+            <div class="card-footer">
+              <span>genlayer.com</span>
+              <span class="card-footer-dot">·</span>
+              <span>Intelligent Blockchain</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="action-btn download-btn" id="download-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M9 3V11M9 11L5.5 7.5M9 11L12.5 7.5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3 13V14C3 14.552 3.448 15 4 15H14C14.552 15 15 14.552 15 14V13"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+            Download card
+          </button>
+          <button class="action-btn share-btn" id="share-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path
+                d="M14 1L9.5 5M14 1L10 5.5M14 1V6M1 9.5C1 9.5 2 14 9 15.5M1 9.5C1 9.5 4 8 7 10M1 9.5L4 7"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Share to X
+          </button>
+          <button class="action-btn reset-btn" id="reset-btn">
+            Make another
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Built for the GenLayer community · AI generation is securely proxied by
+        the server
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
